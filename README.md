@@ -23,6 +23,8 @@ python -m pytest
 ## Project layout
 
 - `src/data_science_project/` — reusable project code
+- `validate_required_columns` checks expected input schema.
+- `validate_no_missing_values` checks data completeness.
 - `tests/` — automated tests
 - `data/raw/` and `data/processed/` — local data directories
 
