@@ -2,6 +2,7 @@ from collections.abc import Sequence
 
 import pandas as pd
 
+
 def validate_no_missing_values(
     data: pd.DataFrame, columns: Sequence[str] | None = None
 ) -> None:
@@ -10,3 +11,12 @@ def validate_no_missing_values(
     missing = selected.columns[selected.isna().any()].tolist()
     if missing:
         raise ValueError(f"Missing values in columns: {missing}")
+
+
+def validate_required_columns(
+    data: pd.DataFrame, required_columns: Sequence[str]
+) -> None:
+    """Raise ValueError when any required columns are absent."""
+    missing = [column for column in required_columns if column not in data.columns]
+    if missing:
+        raise ValueError(f"Missing required columns: {missing}")
